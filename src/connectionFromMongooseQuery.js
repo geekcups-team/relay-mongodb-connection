@@ -18,9 +18,6 @@ function connectionFromMongooseQuery(query, inArgs, mapper) {
       query.skip(pagination.skip);
       query.limit(pagination.limit);
 
-      // Convert all Mongoose documents to objects
-      query.lean();
-
       return query.find().then(function fromSlice(slice) {
         return getConnectionFromSlice(slice, mapper, args, count);
       });
